@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+
+    "lib": ["ES2024", "DOM", "DOM.Iterable"],
+
+    "strict": true,
+
+    "noImplicitOverride": true,
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+
+    "allowJs": false,
+
+    "isolatedModules": true,
+    "verbatimModuleSyntax": true,
+
+    "skipLibCheck": true,
+
+    "types": ["node", "vite/client"],
+
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+
+  "include": ["src", "vite.config.ts"]
+}
