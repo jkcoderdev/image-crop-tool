@@ -68,9 +68,7 @@
               <div>
                 <p class="upload-area__text-primary">Add images</p>
 
-                <p class="upload-area__text-secondary">
-                  Click to select multiple files
-                </p>
+                <p class="upload-area__text-secondary">Click to select multiple files</p>
               </div>
             </button>
           </div>
@@ -99,12 +97,14 @@
 
                 <p>No images yet. Add some to get started.</p>
               </div>
+
+              <div class="images-list__content" id="images-list"></div>
             </div>
           </div>
         </aside>
 
         <section class="editor">
-          <div class="image-preview">
+          <div class="image-preview image-preview--active">
             <div class="image-preview__placeholder">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +126,7 @@
               <p>Select an image to preview it here.</p>
             </div>
 
-            <canvas class="image-preview__canvas"></canvas>
+            <canvas class="image-preview__canvas" id="preview-canvas"></canvas>
           </div>
 
           <div class="image-controls">
@@ -134,9 +134,7 @@
               <label class="image-controls__label">Aspect ratio</label>
 
               <div class="image-controls__ratio-button-group">
-                <button
-                  class="image-controls__ratio-button image-controls__ratio-button--active"
-                >
+                <button class="image-controls__ratio-button image-controls__ratio-button--active" id="ratio-button-1-1">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="48"
@@ -151,10 +149,10 @@
                     <rect width="34" height="34" x="7" y="7" rx="2" />
                   </svg>
 
-                  <p>1:1</p>
+                  <p>1&nbsp;1</p>
                 </button>
 
-                <button class="image-controls__ratio-button">
+                <button class="image-controls__ratio-button" id="ratio-button-4-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="48"
@@ -169,10 +167,10 @@
                     <rect width="38" height="28" x="5" y="10" rx="2" />
                   </svg>
 
-                  <p>4:3</p>
+                  <p>4&nbsp;3</p>
                 </button>
 
-                <button class="image-controls__ratio-button">
+                <button class="image-controls__ratio-button" id="ratio-button-3-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="48"
@@ -187,10 +185,10 @@
                     <rect width="28" height="38" x="10" y="5" rx="2" />
                   </svg>
 
-                  <p style="writing-mode: vertical-lr">3:4</p>
+                  <p>3<br />4</p>
                 </button>
 
-                <button class="image-controls__ratio-button">
+                <button class="image-controls__ratio-button" id="ratio-button-16-9">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="48"
@@ -205,10 +203,10 @@
                     <rect width="42" height="24" x="3" y="12" rx="2" />
                   </svg>
 
-                  <p>16:9</p>
+                  <p>16&nbsp;9</p>
                 </button>
 
-                <button class="image-controls__ratio-button">
+                <button class="image-controls__ratio-button" id="ratio-button-9-16">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="48"
@@ -223,7 +221,7 @@
                     <rect width="24" height="42" x="12" y="3" rx="2" />
                   </svg>
 
-                  <p style="writing-mode: vertical-lr">9:16</p>
+                  <p>9<br />16</p>
                 </button>
               </div>
             </div>
@@ -232,7 +230,7 @@
               <label class="image-controls__label">Orientation</label>
 
               <div class="image-controls__button-row">
-                <button class="image-controls__button">
+                <button class="image-controls__button" id="orientation-button-ccw">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -245,14 +243,12 @@
                     stroke-linejoin="round"
                     aria-hidden="true"
                   >
-                    <path
-                      d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"
-                    ></path>
+                    <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path>
                     <path d="M3 3v5h5"></path>
                   </svg>
                 </button>
 
-                <button class="image-controls__button">
+                <button class="image-controls__button" id="orientation-button-cw">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -265,43 +261,40 @@
                     stroke-linejoin="round"
                     aria-hidden="true"
                   >
-                    <path
-                      d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"
-                    ></path>
+                    <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"></path>
                     <path d="M21 3v5h-5"></path>
                   </svg>
                 </button>
 
-                <button class="image-controls__button">Reset</button>
+                <button class="image-controls__button" id="orientation-button-reset">Reset</button>
               </div>
             </div>
 
             <div class="image-controls__group">
               <label class="image-controls__label">Z-axis rotation</label>
 
-              <input
-                class="image-controls__slider"
-                type="range"
-                min="-90"
-                max="90"
-                value="0"
-              />
+              <input class="image-controls__slider" id="rotation-slider" type="range" min="-90" max="90" value="0" />
             </div>
 
             <div class="image-controls__group">
               <label class="image-controls__label">Zoom</label>
 
               <div class="image-controls__button-row">
-                <select class="image-controls__select">
-                  <option value="">100%</option>
-                  <option value="">150%</option>
-                  <option value="">200%</option>
-                  <option value="">300%</option>
-                  <option value="">600%</option>
-                  <option value="">800%</option>
+                <select class="image-controls__select" id="zoom-select">
+                  <option value="1">100%</option>
+                  <option value="1.5">150%</option>
+                  <option value="2">200%</option>
+                  <option value="3">300%</option>
+                  <option value="4">400%</option>
+                  <option value="6">600%</option>
+                  <option value="8">800%</option>
+                  <option value="12">1200%</option>
+                  <option value="16">1600%</option>
+                  <option value="24">2400%</option>
+                  <option value="32">3200%</option>
                 </select>
 
-                <button class="image-controls__button">
+                <button class="image-controls__button" id="zoom-button-out">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -312,7 +305,6 @@
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    class="lucide lucide-zoom-out size-4"
                     aria-hidden="true"
                   >
                     <circle cx="11" cy="11" r="8"></circle>
@@ -321,7 +313,7 @@
                   </svg>
                 </button>
 
-                <button class="image-controls__button">
+                <button class="image-controls__button" id="zoom-button-in">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="24"
@@ -332,7 +324,6 @@
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    class="lucide lucide-zoom-in size-4"
                     aria-hidden="true"
                   >
                     <circle cx="11" cy="11" r="8"></circle>
@@ -342,7 +333,7 @@
                   </svg>
                 </button>
 
-                <button class="image-controls__button">Reset</button>
+                <button class="image-controls__button" id="zoom-button-reset">Reset</button>
               </div>
             </div>
           </div>
