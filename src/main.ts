@@ -1,5 +1,7 @@
 import '@/styles/main.scss';
 
+const filesUploadInput = document.getElementById('files-upload-input') as HTMLInputElement;
+
 const imagesList = document.getElementById('images-list') as HTMLDivElement;
 
 const previewCanvas = document.getElementById('preview-canvas') as HTMLCanvasElement;
