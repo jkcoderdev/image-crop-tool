@@ -2,7 +2,7 @@ import '@/styles/main.scss';
 
 const filesUploadInput = document.getElementById('files-upload-input') as HTMLInputElement;
 
-const imagesList = document.getElementById('images-list') as HTMLDivElement;
+const imagesList = document.getElementById('images-list') as HTMLUListElement;
 
 const previewCanvas = document.getElementById('preview-canvas') as HTMLCanvasElement;
 
@@ -30,3 +30,7 @@ const zoomButtons: Record<string, HTMLButtonElement> = {
 
 const zoomSelect = document.getElementById('zoom-select') as HTMLSelectElement;
 const zoomResetButton = document.getElementById('zoom-button-reset') as HTMLButtonElement;
+
+rotationSlider.addEventListener('dblclick', () => {
+  rotationSlider.value = '0';
+});
