@@ -34,3 +34,10 @@ const zoomResetButton = document.getElementById('zoom-button-reset') as HTMLButt
 rotationSlider.addEventListener('dblclick', () => {
   rotationSlider.value = '0';
 });
+
+window.addEventListener('resize', () => {
+  const { width, height } = previewCanvas.getBoundingClientRect();
+
+  previewCanvas.width = width;
+  previewCanvas.height = height;
+});

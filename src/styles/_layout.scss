@@ -123,6 +123,7 @@
   max-height: 640px;
   overflow: hidden;
   flex: 1;
+  position: relative;
 
   &__placeholder {
     height: 100%;
@@ -141,12 +142,29 @@
     display: none;
   }
 
+  &__preloader {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    position: absolute;
+    inset: 0;
+
+    pointer-events: none;
+  }
+
   &--active &__placeholder {
     display: none;
   }
 
   &--active &__canvas {
     display: block;
+  }
+
+  &--loading &__preloader {
+    display: flex;
   }
 }
 

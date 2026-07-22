@@ -97,9 +97,33 @@
               </div>
 
               <ul class="images-list__content" id="images-list">
-                <!-- <li>
+                <li>
                   <button class="image-item">
                     <div class="image-item__thumbnail">
+                      <div class="image-item__thumbnail-placeholder">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          aria-hidden="true"
+                        >
+                          <path d="M12 2v4"></path>
+                          <path d="m16.2 7.8 2.9-2.9"></path>
+                          <path d="M18 12h4"></path>
+                          <path d="m16.2 16.2 2.9 2.9"></path>
+                          <path d="M12 18v4"></path>
+                          <path d="m4.9 19.1 2.9-2.9"></path>
+                          <path d="M2 12h4"></path>
+                          <path d="m4.9 4.9 2.9 2.9"></path>
+                        </svg>
+                      </div>
+
                       <img src="" alt="" />
                     </div>
 
@@ -126,14 +150,14 @@
                       </svg>
                     </span>
                   </button>
-                </li> -->
+                </li>
               </ul>
             </div>
           </div>
         </aside>
 
         <section class="editor">
-          <div class="image-preview image-preview--active">
+          <div class="image-preview image-preview--active image-preview--loading">
             <div class="image-preview__placeholder">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -156,6 +180,32 @@
             </div>
 
             <canvas class="image-preview__canvas" id="preview-canvas"></canvas>
+
+            <div class="image-preview__preloader">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M12 2v4"></path>
+                <path d="m16.2 7.8 2.9-2.9"></path>
+                <path d="M18 12h4"></path>
+                <path d="m16.2 16.2 2.9 2.9"></path>
+                <path d="M12 18v4"></path>
+                <path d="m4.9 19.1 2.9-2.9"></path>
+                <path d="M2 12h4"></path>
+                <path d="m4.9 4.9 2.9 2.9"></path>
+              </svg>
+
+              <p>Loading preview...</p>
+            </div>
           </div>
 
           <div class="image-controls">
